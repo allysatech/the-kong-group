@@ -12,6 +12,14 @@
   --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
     Helvetica, Arial, sans-serif;
   --font-serif: 'Lora', Georgia, 'Times New Roman', serif;
+  --font-display: 'Archivo Black', 'Anton', Impact, sans-serif;
+  --font-statement: 'Barlow Condensed', 'Anton', Impact, sans-serif;
+  --font-condensed: 'Barlow Condensed', 'Anton', Impact, sans-serif;
+
+  --about-bg: #fff6e5;
+  --about-red: #b52d23;
+  --about-salmon: #ce8e80;
+  --about-navy: #182b49;
 }
 
 *,
@@ -595,135 +603,267 @@ button:focus-visible {
 }
 
 /* ==========================================================================
-   SECTION 2: ABOUT THE KONG GROUP
+   SECTION 2: ABOUT THE KONG GROUP (Playful Editorial Wireframe Design)
    ========================================================================== */
 
 .about-section {
+  position: relative;
   width: 100%;
-  background-color: var(--bg-light);
+  background-color: var(--about-bg);
+  overflow: hidden;
 }
 
 .about-section__inner {
   max-width: 1440px;
   margin: 0 auto;
-  padding: 52px 64px 88px;
-  display: grid;
-  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
-  grid-template-areas:
-    'eyebrow eyebrow'
-    'statement paragraphs'
-    'supporting photos'
-    'cta photos';
-  column-gap: 64px;
+  padding: 46px 64px 72px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 }
 
 .about-section__eyebrow {
-  grid-area: eyebrow;
-  margin-bottom: 44px;
-  font-size: 12px;
-  font-weight: 700;
+  font-family: var(--font-sans);
+  font-size: clamp(12px, 1.05vw, 15px);
+  font-weight: 800;
   line-height: 1.2;
-  letter-spacing: 0.02em;
-  color: var(--accent-red);
-}
-
-.about-section__statement {
-  grid-area: statement;
-  font-family: var(--font-serif);
-  font-size: clamp(38px, 4.25vw, 61px);
-  font-weight: 700;
-  line-height: 1.22;
-  letter-spacing: -0.015em;
-  color: var(--text-primary);
-  display: flex;
-  flex-direction: column;
-}
-
-.about-section__supporting {
-  grid-area: supporting;
-  margin-top: 48px;
-  max-width: 460px;
-  font-size: 21px;
-  font-weight: 400;
-  line-height: 1.52;
-  color: var(--text-secondary);
-}
-
-.about-section__paragraphs {
-  grid-area: paragraphs;
-  display: flex;
-  flex-direction: column;
-  gap: 32px;
-  padding-top: 4px;
-}
-
-.about-section__lead {
-  font-size: 20px;
-  font-weight: 400;
-  line-height: 1.6;
-  color: var(--text-primary);
-}
-
-.about-section__body {
-  font-size: 18px;
-  font-weight: 400;
-  line-height: 1.6;
-  color: var(--text-secondary);
-}
-
-.about-section__photos {
-  grid-area: photos;
-  margin-top: 40px;
-  display: grid;
-  grid-template-columns: 352fr 244fr;
-  gap: 12px;
-  align-self: start;
-}
-
-.about-section__photo-card {
+  letter-spacing: 0.03em;
+  color: var(--about-navy);
+  margin-bottom: 12px;
   position: relative;
-  min-width: 0;
+  z-index: 3;
+}
+
+/* Hero Title Stage + 4 Positioned Characters */
+.about-section__hero-stage {
+  position: relative;
   width: 100%;
-  height: 230px;
-  overflow: hidden;
-  background-color: #e6e3dc;
+  max-width: 1260px;
+  margin: 26px auto 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
-.about-section__photo {
+.about-section__title {
+  position: relative;
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: -0.025em;
+  user-select: none;
+  z-index: 2;
 }
 
-.about-section__photo-card--venue .about-section__photo {
-  object-position: center 52%;
+/* Sharp Horizontal 50/50 Split Colour on Opaque Lettering */
+.about-section__title-desktop {
+  display: inline-block;
+  font-size: clamp(92px, 16vw, 224px);
+  line-height: 0.84;
+  letter-spacing: -0.025em;
+  white-space: nowrap;
+  transform: scaleY(1.06);
+  transform-origin: center center;
+  background: linear-gradient(
+    180deg,
+    var(--about-red) 0%,
+    var(--about-red) 50.5%,
+    var(--about-salmon) 50.5%,
+    var(--about-salmon) 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
-.about-section__photo-card--food .about-section__photo {
-  object-position: center center;
+.about-section__title-mobile {
+  display: none;
 }
 
+/* Character Cutouts around the Oversized Title */
+.about-section__char {
+  position: absolute;
+  height: auto;
+  object-fit: contain;
+  pointer-events: none;
+  user-select: none;
+  z-index: 4;
+}
+
+/* Upper left: Double Cheese Please lying on stomach with sneakered feet raised */
+.about-section__char--dcp {
+  width: clamp(110px, 13.8%, 172px);
+  left: 11%;
+  top: -33%;
+}
+
+/* Upper right: Black Kingu Kongu daruma with cream furry arms & orange accent marks */
+.about-section__char--kingu-kongu {
+  width: clamp(94px, 11.6%, 146px);
+  right: 8.5%;
+  top: -29%;
+}
+
+/* Lower left of title: Green smiling Lucky Kong daruma */
+.about-section__char--lucky-kong {
+  width: clamp(110px, 14%, 174px);
+  left: 1%;
+  bottom: -44%;
+}
+
+/* Lower right of title: Yellow Kingu Ramen daruma with raised hands */
+.about-section__char--kingu-ramen {
+  width: clamp(106px, 13.5%, 168px);
+  right: 1%;
+  bottom: -38%;
+}
+
+/* Introductory Paragraph — Navy */
+.about-section__intro {
+  position: relative;
+  z-index: 3;
+  margin-top: 24px;
+  max-width: min(740px, 67%);
+  font-family: var(--font-sans);
+  font-size: clamp(14.5px, 1.25vw, 18px);
+  font-weight: 500;
+  line-height: 1.45;
+  letter-spacing: -0.005em;
+  color: var(--about-navy);
+}
+
+/* Large 3-Line (Desktop) / 4-Line (Mobile) Statement */
+.about-section__statement {
+  position: relative;
+  z-index: 3;
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: var(--font-statement);
+  font-size: clamp(46px, 5.8vw, 82px);
+  font-weight: 900;
+  line-height: 0.92;
+  letter-spacing: 0.005em;
+  text-transform: uppercase;
+}
+
+.about-section__statement-line {
+  display: block;
+}
+
+.about-section__statement-line--red {
+  color: var(--about-red);
+}
+
+.about-section__statement-line--navy {
+  color: var(--about-navy);
+}
+
+.about-section__statement-line--mobile-family {
+  display: none;
+}
+
+/* Supporting Statement — Brick Red */
+.about-section__supporting {
+  position: relative;
+  z-index: 3;
+  margin-top: 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  font-family: var(--font-condensed);
+  font-size: clamp(18px, 1.85vw, 26px);
+  font-weight: 800;
+  line-height: 1.12;
+  letter-spacing: 0.02em;
+  color: var(--about-red);
+  text-transform: uppercase;
+}
+
+/* Short Centred Red Horizontal Divider */
+.about-section__divider {
+  width: 54px;
+  height: 3px;
+  border-radius: 2px;
+  background-color: var(--about-red);
+  margin: 20px auto 18px;
+}
+
+/* Closing Paragraph — Navy */
+.about-section__closing {
+  position: relative;
+  z-index: 3;
+  max-width: 650px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  font-family: var(--font-sans);
+  font-size: clamp(15px, 1.32vw, 18.5px);
+  font-weight: 500;
+  line-height: 1.45;
+  letter-spacing: -0.005em;
+  color: var(--about-navy);
+}
+
+.about-section__closing-line {
+  display: block;
+}
+
+/* Outlined Capsule Link — Red Border and Red Text */
 .about-section__cta-wrap {
-  grid-area: cta;
-  margin-top: 104px;
-  align-self: end;
+  position: relative;
+  z-index: 3;
+  margin-top: 24px;
 }
 
-.about-section__cta-link {
+.about-section__cta-btn {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 8px;
-  min-height: 44px;
-  font-size: 12px;
-  font-weight: 700;
-  line-height: 1.2;
+  min-height: 48px;
+  padding: 10px 42px;
+  border-radius: 999px;
+  border: 2px solid var(--about-red);
+  background-color: transparent;
+  color: var(--about-red);
+  font-family: var(--font-sans);
+  font-size: clamp(14px, 1.18vw, 16.5px);
+  font-weight: 800;
+  line-height: 1.1;
   letter-spacing: 0.02em;
-  color: var(--text-primary);
-  transition: color 180ms ease;
+  text-transform: uppercase;
+  transition: background-color 200ms ease, color 200ms ease,
+    transform 200ms ease;
 }
 
-.about-section__cta-link:hover {
-  color: var(--accent-red);
+.about-section__cta-btn:hover {
+  background-color: var(--about-red);
+  color: var(--about-bg);
+  transform: translateY(-1px);
+}
+
+.about-section__cta-btn:focus-visible {
+  outline: 3px solid var(--about-navy);
+  outline-offset: 4px;
+}
+
+.about-section__cta-arrow {
+  display: inline-block;
+  font-size: 1.05em;
+  line-height: 1;
+  transition: transform 200ms ease;
+}
+
+.about-section__cta-btn:hover .about-section__cta-arrow {
+  transform: translate(2px, -2px);
 }
 
 /* ==========================================================================
@@ -1331,8 +1471,15 @@ button:focus-visible {
   }
 
   .about-section__inner {
-    padding: 48px 40px 72px;
-    column-gap: 40px;
+    padding: 44px 40px 64px;
+  }
+
+  .about-section__title-desktop {
+    font-size: clamp(82px, 15.6vw, 178px);
+  }
+
+  .about-section__intro {
+    max-width: min(560px, 60%);
   }
 
   .brands-section__inner {
@@ -1436,63 +1583,131 @@ button:focus-visible {
     margin: 0 24px;
   }
 
-  /* Mobile About Section Layout (exact stack order 1..5) */
+  /* Mobile About Section Layout (9:16 Portrait Reference) */
   .about-section__inner {
-    padding: 40px 24px 56px;
-    grid-template-columns: 1fr;
-    grid-template-areas:
-      'eyebrow'
-      'statement'
-      'supporting'
-      'paragraphs'
-      'photos'
-      'cta';
-    row-gap: 0;
+    padding: 36px 24px 56px;
   }
 
   .about-section__eyebrow {
-    font-size: 10px;
-    margin-bottom: 32px;
+    font-size: 13px;
+    letter-spacing: 0.03em;
+    margin-bottom: 8px;
+  }
+
+  .about-section__hero-stage {
+    max-width: 520px;
+    margin-top: 64px;
+  }
+
+  .about-section__title-desktop {
+    display: none;
+  }
+
+  .about-section__title-mobile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    width: 100%;
+  }
+
+  .about-section__title-mobile-line {
+    display: inline-block;
+    font-size: clamp(78px, 25.4vw, 146px);
+    line-height: 0.84;
+    letter-spacing: -0.025em;
+    white-space: nowrap;
+    transform: scaleY(1.06);
+    transform-origin: center center;
+    background: linear-gradient(
+      180deg,
+      var(--about-red) 0%,
+      var(--about-red) 50.5%,
+      var(--about-salmon) 50.5%,
+      var(--about-salmon) 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  /* Upper characters near the top of "ABOUT" */
+  .about-section__char--dcp {
+    width: clamp(92px, 26vw, 142px);
+    left: 6%;
+    top: -64px;
+  }
+
+  .about-section__char--kingu-kongu {
+    width: clamp(80px, 22.5vw, 122px);
+    right: 6%;
+    top: -62px;
+  }
+
+  /* Green & yellow daruma characters beside the "US" line */
+  .about-section__char--lucky-kong {
+    width: clamp(82px, 24.5vw, 134px);
+    left: 0%;
+    bottom: 2%;
+  }
+
+  .about-section__char--kingu-ramen {
+    width: clamp(80px, 24vw, 132px);
+    right: 0%;
+    bottom: 2%;
+  }
+
+  .about-section__intro {
+    margin-top: 24px;
+    max-width: 420px;
+    font-size: 16px;
+    line-height: 1.48;
   }
 
   .about-section__statement {
-    font-size: clamp(32px, 9.1vw, 42px);
-    line-height: 1.24;
+    margin-top: 24px;
+    font-size: clamp(44px, 13.4vw, 72px);
+    line-height: 0.92;
+  }
+
+  .about-section__statement-line--desktop-family {
+    display: none;
+  }
+
+  .about-section__statement-line--mobile-family {
+    display: block;
   }
 
   .about-section__supporting {
-    margin-top: 24px;
+    margin-top: 18px;
+    font-size: clamp(14.5px, 4.35vw, 22px);
+    line-height: 1.15;
+    letter-spacing: 0.01em;
+  }
+
+  .about-section__divider {
+    width: 48px;
+    height: 3px;
+    margin: 18px auto 16px;
+  }
+
+  .about-section__closing {
+    max-width: 420px;
     font-size: 16px;
-    line-height: 1.5;
-  }
-
-  .about-section__paragraphs {
-    margin-top: 24px;
-    gap: 22px;
-  }
-
-  .about-section__lead {
-    font-size: 15px;
-    line-height: 1.6;
-  }
-
-  .about-section__body {
-    font-size: 14px;
-    line-height: 1.64;
-  }
-
-  .about-section__photos {
-    margin-top: 32px;
-    grid-template-columns: 1.24fr 1fr;
-    gap: 10px;
-  }
-
-  .about-section__photo-card {
-    height: 172px;
+    line-height: 1.48;
   }
 
   .about-section__cta-wrap {
-    margin-top: 28px;
+    margin-top: 24px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .about-section__cta-btn {
+    min-height: 48px;
+    padding: 10px 36px;
+    font-size: 15px;
   }
 
   /* Mobile Section 3: Assemble Banner + 2x2 Slanted Grid */
@@ -1715,11 +1930,61 @@ button:focus-visible {
   }
 
   .about-section__inner {
-    padding: 34px 16px 46px;
+    padding: 32px 20px 48px;
   }
 
-  .about-section__photo-card {
-    height: 144px;
+  .about-section__eyebrow {
+    font-size: 11.5px;
+  }
+
+  .about-section__hero-stage {
+    margin-top: 56px;
+  }
+
+  .about-section__title-mobile-line {
+    font-size: clamp(66px, 24.5vw, 92px);
+  }
+
+  .about-section__char--dcp {
+    width: clamp(76px, 25vw, 94px);
+    left: 4%;
+    top: -50px;
+  }
+
+  .about-section__char--kingu-kongu {
+    width: clamp(66px, 21.5vw, 82px);
+    right: 4%;
+    top: -48px;
+  }
+
+  .about-section__char--lucky-kong {
+    width: clamp(68px, 23vw, 84px);
+    left: 0%;
+  }
+
+  .about-section__char--kingu-ramen {
+    width: clamp(66px, 22.5vw, 82px);
+    right: 0%;
+  }
+
+  .about-section__intro,
+  .about-section__closing {
+    font-size: 15px;
+    line-height: 1.48;
+  }
+
+  .about-section__statement {
+    font-size: clamp(38px, 12.8vw, 48px);
+  }
+
+  .about-section__supporting {
+    font-size: 13.5px;
+    letter-spacing: 0.005em;
+  }
+
+  .about-section__cta-btn {
+    padding: 10px 28px;
+    font-size: 14px;
   }
 
   .brands-section__inner {

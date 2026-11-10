@@ -63,6 +63,33 @@ export const ABOUT_PHOTOS = {
   },
 };
 
+export const ABOUT_CHARACTERS = {
+  dcp: {
+    src: '/assets/about/about-dcp.png',
+    width: 306,
+    height: 212,
+    alt: 'Double Cheese Please character with black spiky hair and cyan sunglasses lying on his stomach with his sneakered feet raised',
+  },
+  kinguKongu: {
+    src: '/assets/about/about-kingu-kongu.png',
+    width: 260,
+    height: 231,
+    alt: 'Black Kingu Kongu daruma with cream furry arms, one hand near its forehead and orange accent marks',
+  },
+  luckyKong: {
+    src: '/assets/about/about-lucky-kong.png',
+    width: 300,
+    height: 257,
+    alt: 'Green smiling Lucky Kong daruma with raised cream furry arms',
+  },
+  kinguRamen: {
+    src: '/assets/about/about-kingu-ramen.png',
+    width: 281,
+    height: 248,
+    alt: 'Yellow Kingu Ramen daruma with raised hands',
+  },
+};
+
 export const ASSEMBLE_CHARACTERS: AssembleCharacter[] = [
   {
     id: 'assemble-kingu-kongu',

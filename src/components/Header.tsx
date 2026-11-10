@@ -124,7 +124,7 @@ export const Header: React.FC = () => {
           onClick={() => setMenuOpen(false)}
         >
           <img
-            src="/assets/logo/the-kong-group-logo.png"
+            src="/assets/logo/the-kong-group-logo-white.png"
             width={807}
             height={487}
             alt="The Kong Group"

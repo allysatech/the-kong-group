@@ -1421,9 +1421,9 @@ button:focus-visible {
 .site-footer__admin-btn {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  justify-content: center;
   min-height: 38px;
-  padding: 0 16px;
+  padding: 0 22px;
   border-radius: 999px;
   border: 1px solid rgba(255, 255, 255, 0.22);
   background-color: rgba(255, 255, 255, 0.05);
@@ -1440,18 +1440,6 @@ button:focus-visible {
   border-color: var(--accent-red);
   color: #ffffff;
   transform: translateY(-1px);
-}
-
-.site-footer__admin-dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background-color: var(--accent-red);
-  transition: background-color 180ms ease;
-}
-
-.site-footer__admin-btn:hover .site-footer__admin-dot {
-  background-color: #ffffff;
 }
 
 .site-footer__divider {

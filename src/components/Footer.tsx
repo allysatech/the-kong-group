@@ -114,12 +114,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenAdminLogin }) => {
                     onClick={handleAdminClick}
                     className="site-footer__admin-btn"
                   >
-                    <span
-                      className="site-footer__admin-dot"
-                      aria-hidden="true"
-                    />
-                    <span>ADMIN LOGIN</span>
-                    <span aria-hidden="true">→</span>
+                    <span>LOGIN</span>
                   </a>
                 </li>
               </ul>
@@ -153,7 +148,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenAdminLogin }) => {
               onClick={handleAdminClick}
               className="site-footer__admin-bottom-link"
             >
-              <span>ADMIN LOGIN</span>
+              <span>LOGIN</span>
             </a>
             <a href="#home" className="site-footer__back-to-top">
               <span>BACK TO TOP</span>

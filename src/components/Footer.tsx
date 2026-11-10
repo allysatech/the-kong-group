@@ -1,8 +1,19 @@
 import React from 'react';
 import { BRANDS, SOCIAL_LINKS } from '../data/brands';
 
-export const Footer: React.FC = () => {
+interface FooterProps {
+  onOpenAdminLogin?: () => void;
+}
+
+export const Footer: React.FC<FooterProps> = ({ onOpenAdminLogin }) => {
   const currentYear = new Date().getFullYear();
+
+  const handleAdminClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
+    if (onOpenAdminLogin) {
+      event.preventDefault();
+      onOpenAdminLogin();
+    }
+  };
 
   return (
     <footer className="site-footer" role="contentinfo">
@@ -97,6 +108,20 @@ export const Footer: React.FC = () => {
                     {SOCIAL_LINKS.instagramHandle}
                   </a>
                 </li>
+                <li className="site-footer__admin-item">
+                  <a
+                    href="#admin-login"
+                    onClick={handleAdminClick}
+                    className="site-footer__admin-btn"
+                  >
+                    <span
+                      className="site-footer__admin-dot"
+                      aria-hidden="true"
+                    />
+                    <span>ADMIN LOGIN</span>
+                    <span aria-hidden="true">→</span>
+                  </a>
+                </li>
               </ul>
             </div>
           </div>
@@ -122,10 +147,19 @@ export const Footer: React.FC = () => {
           <p className="site-footer__copyright">
             © {currentYear} The Kong Group. All rights reserved.
           </p>
-          <a href="#home" className="site-footer__back-to-top">
-            <span>BACK TO TOP</span>
-            <span aria-hidden="true">↑</span>
-          </a>
+          <div className="site-footer__bottom-actions">
+            <a
+              href="#admin-login"
+              onClick={handleAdminClick}
+              className="site-footer__admin-bottom-link"
+            >
+              <span>ADMIN LOGIN</span>
+            </a>
+            <a href="#home" className="site-footer__back-to-top">
+              <span>BACK TO TOP</span>
+              <span aria-hidden="true">↑</span>
+            </a>
+          </div>
         </div>
       </div>
     </footer>

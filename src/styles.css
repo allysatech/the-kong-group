@@ -32,7 +32,7 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 84px;
+  scroll-padding-top: 0;
   background-color: #080808;
   color: #ffffff;
   font-family: var(--font-sans);
@@ -873,6 +873,10 @@ button:focus-visible {
 
 .brands-section {
   width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   background-color: var(--bg-brands);
   color: #ffffff;
 }
@@ -881,17 +885,22 @@ button:focus-visible {
   width: 100%;
   max-width: 1320px;
   margin: 0 auto;
-  padding: 52px 48px 48px;
+  padding: 16px 40px 16px;
 }
 
 /* Unified Showcase Container (Top Assemble Banner + Bottom 4 Slanted Panels) */
 .brands-showcase {
+  /* Available viewport height after accounting for 78px header & section chrome */
+  --brands-avail-h: calc(100vh - 78px - 55px);
   width: 100%;
-  max-width: 1160px;
+  /* Scale container width proportionally with available viewport height so both the
+     top banner (~37-39% of available height) and 4 cards (~55% of available height)
+     fit completely in one desktop screen without stretching or cropping */
+  max-width: min(1160px, calc((100vh - 165px) * 1.48));
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 14px;
 }
 
 /* ==========================================================================
@@ -901,7 +910,8 @@ button:focus-visible {
 .brands-assemble {
   position: relative;
   width: 100%;
-  aspect-ratio: 16 / 8.2;
+  /* 16 / 4.65 ratio gives the banner ~37.5% of the available section height */
+  aspect-ratio: 16 / 4.65;
   border-radius: 4px;
   overflow: hidden;
   background:
@@ -925,9 +935,9 @@ button:focus-visible {
 /* Top Metadata Bar inside Assemble Banner */
 .brands-assemble__top-bar {
   position: absolute;
-  top: 5.2%;
-  left: 4.4%;
-  right: 4.4%;
+  top: 5.5%;
+  left: 3.8%;
+  right: 3.8%;
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
@@ -940,13 +950,13 @@ button:focus-visible {
 .brands-assemble__meta-left {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
 }
 
 .brands-assemble__meta-bar {
   display: block;
-  width: 5px;
-  height: 26px;
+  width: 4px;
+  height: 22px;
   border-radius: 1px;
   background-color: rgba(255, 255, 255, 0.85);
 }
@@ -954,9 +964,9 @@ button:focus-visible {
 .brands-assemble__meta-lines {
   display: flex;
   flex-direction: column;
-  gap: 3px;
+  gap: 2px;
   font-family: var(--font-sans);
-  font-size: clamp(9px, 0.86vw, 12px);
+  font-size: clamp(8px, 0.72vw, 10.5px);
   font-weight: 700;
   line-height: 1.15;
   letter-spacing: 0.06em;
@@ -968,16 +978,16 @@ button:focus-visible {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  gap: 5px;
+  gap: 4px;
   text-align: right;
 }
 
 .brands-assemble__meta-tags {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
   font-family: var(--font-sans);
-  font-size: clamp(8.5px, 0.78vw, 11px);
+  font-size: clamp(7.5px, 0.68vw, 10px);
   font-weight: 800;
   line-height: 1;
   letter-spacing: 0.06em;
@@ -990,7 +1000,7 @@ button:focus-visible {
 
 .brands-assemble__meta-sub {
   font-family: var(--font-sans);
-  font-size: clamp(7.5px, 0.65vw, 9.5px);
+  font-size: clamp(7px, 0.58vw, 8.5px);
   font-weight: 600;
   line-height: 1.1;
   letter-spacing: 0.08em;
@@ -1000,16 +1010,16 @@ button:focus-visible {
 /* Giant Frosted White "KONG FAMILY" Display Text Behind Characters */
 .brands-assemble__backdrop {
   position: absolute;
-  top: 19%;
+  top: 18%;
   left: 1%;
   right: 1%;
   text-align: center;
   font-family: var(--font-sans);
-  font-size: clamp(44px, 10.9vw, 150px);
+  font-size: clamp(38px, 7.6vw, 112px);
   font-weight: 900;
   line-height: 0.88;
   letter-spacing: -0.03em;
-  transform: scaleY(1.62);
+  transform: scaleY(1.48);
   transform-origin: center top;
   text-transform: uppercase;
   white-space: nowrap;
@@ -1030,10 +1040,10 @@ button:focus-visible {
 /* 5-Character Assembled Lineup Standing on Studio Floor */
 .brands-assemble__lineup {
   position: absolute;
-  left: 4.5%;
-  right: 4.5%;
-  top: 15%;
-  bottom: 7.5%;
+  left: 5%;
+  right: 5%;
+  top: 11%;
+  bottom: 6.5%;
   display: grid;
   grid-template-columns: 1.08fr 1.08fr 1.08fr 0.94fr 0.82fr;
   grid-template-rows: minmax(0, 1fr);
@@ -1062,10 +1072,10 @@ button:focus-visible {
 .brands-assemble__shadow {
   position: absolute;
   left: 50%;
-  bottom: -6px;
+  bottom: -5px;
   transform: translateX(-50%) scale(1);
-  width: 72%;
-  height: 18px;
+  width: 68%;
+  height: 14px;
   border-radius: 50%;
   background: radial-gradient(
     ellipse at 50% 50%,
@@ -1086,8 +1096,8 @@ button:focus-visible {
   object-fit: contain;
   object-position: center bottom;
   filter: drop-shadow(0 10px 18px rgba(34, 54, 88, 0.22));
-  transform: translateY(0) scale(1);
-  transform-origin: 50% 90%;
+  transform: translateY(0) scale(1.1);
+  transform-origin: 50% 100%;
   transition: transform 340ms cubic-bezier(0.22, 1, 0.36, 1);
   pointer-events: none;
   z-index: 2;
@@ -1095,7 +1105,7 @@ button:focus-visible {
 
 .brands-assemble__char:hover .brands-assemble__img,
 .brands-assemble__char:focus-visible .brands-assemble__img {
-  transform: translateY(-9px) scale(1.045);
+  transform: translateY(-7px) scale(1.145);
 }
 
 .brands-assemble__char:hover .brands-assemble__shadow,
@@ -1127,7 +1137,7 @@ button:focus-visible {
   position: relative;
   display: block;
   width: 100%;
-  aspect-ratio: 351 / 500;
+  aspect-ratio: 351 / 460;
   isolation: isolate;
 }
 
@@ -1189,22 +1199,22 @@ button:focus-visible {
   position: absolute;
   left: 6%;
   right: 11%;
-  bottom: 5.5%;
+  bottom: 5%;
   text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-end;
-  gap: 18px;
+  gap: 10px;
   pointer-events: none;
   z-index: 4;
 }
 
 .brand-panel__name {
   font-family: var(--font-sans);
-  font-size: clamp(16px, 1.53vw, 22px);
+  font-size: clamp(13px, 1.25vw, 19px);
   font-weight: 800;
-  line-height: 1.22;
+  line-height: 1.18;
   letter-spacing: 0.01em;
   color: #ffffff;
   text-transform: uppercase;
@@ -1222,7 +1232,7 @@ button:focus-visible {
   display: inline-flex;
   align-items: center;
   gap: 5px;
-  font-size: 10px;
+  font-size: clamp(8.5px, 0.75vw, 10px);
   font-weight: 700;
   line-height: 1.2;
   letter-spacing: 0.05em;
@@ -1259,7 +1269,7 @@ button:focus-visible {
 
   .brands-assemble__char:hover .brands-assemble__img,
   .brands-assemble__char:focus-visible .brands-assemble__img {
-    transform: none;
+    transform: scale(1.1);
   }
 
   .brand-panel:hover .brand-panel__character,
@@ -1274,9 +1284,9 @@ button:focus-visible {
 }
 
 .brands-section__footer-label {
-  margin-top: 32px;
+  margin-top: 10px;
   text-align: center;
-  font-size: 11px;
+  font-size: 10.5px;
   font-weight: 700;
   line-height: 1.2;
   letter-spacing: 0.04em;
@@ -1823,7 +1833,7 @@ button:focus-visible {
   }
 
   .brands-section__inner {
-    padding: 30px 32px 32px;
+    padding: 16px 32px 16px;
   }
 
   .site-footer__inner {
@@ -2051,6 +2061,11 @@ button:focus-visible {
   }
 
   /* Mobile Section 3: Assemble Banner + 2x2 Slanted Grid */
+  .brands-section {
+    min-height: auto;
+    display: block;
+  }
+
   .brands-section__inner {
     padding: 44px 16px 46px;
   }
@@ -2081,12 +2096,18 @@ button:focus-visible {
   }
 
   .brands-showcase {
+    max-width: 100%;
     gap: 18px;
   }
 
   .brands-assemble {
     aspect-ratio: 16 / 9.8;
     border-radius: 4px;
+  }
+
+  .brands-assemble__img {
+    transform: translateY(0) scale(1);
+    transform-origin: 50% 90%;
   }
 
   .brands-assemble__top-bar {

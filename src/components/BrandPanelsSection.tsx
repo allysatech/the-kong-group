@@ -10,19 +10,9 @@ export const BrandPanelsSection: React.FC = () => {
       aria-labelledby="brands-heading"
     >
       <div className="brands-section__inner">
-        <header className="brands-section__header">
-          <p className="brands-section__eyebrow">OUR PLATFORMS</p>
-          <h2 id="brands-heading" className="brands-section__heading">
-            <span>Four brands.</span>
-            <span>One Kong family.</span>
-          </h2>
-          <p className="brands-section__supporting brands-section__supporting--desktop">
-            Find your next favourite. Explore each brand’s own world.
-          </p>
-          <p className="brands-section__supporting brands-section__supporting--mobile">
-            Choose your Kong.
-          </p>
-        </header>
+        <h2 id="brands-heading" className="sr-only">
+          Our Platforms — Four brands. One Kong family.
+        </h2>
 
         <div className="brands-showcase">
           {/* Top Assemble Showcase Banner (GO LIFE IP style) */}

@@ -28,6 +28,7 @@ export const BrandPanel: React.FC<BrandPanelProps> = ({ brand }) => {
           style={{
             top: brand.portraitStyle.top,
             height: brand.portraitStyle.height,
+            ...(brand.portraitStyle.left ? { left: brand.portraitStyle.left } : {}),
           }}
         />
         <div className="brand-panel__bottom-fade" aria-hidden="true" />

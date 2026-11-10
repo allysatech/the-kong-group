@@ -602,36 +602,40 @@ button:focus-visible {
 
 .brands-section {
   width: 100%;
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
   background-color: var(--bg-brands);
   color: #ffffff;
 }
 
 .brands-section__inner {
-  max-width: 1440px;
+  width: 100%;
+  max-width: 1320px;
   margin: 0 auto;
-  padding: 54px 48px 62px;
+  padding: 28px 48px 30px;
 }
 
 .brands-section__header {
   text-align: center;
-  max-width: 760px;
-  margin: 0 auto 62px;
+  max-width: 720px;
+  margin: 0 auto 26px;
 }
 
 .brands-section__eyebrow {
-  font-size: 14px;
+  font-size: 12px;
   font-weight: 700;
   line-height: 1.2;
   letter-spacing: 0.03em;
   color: var(--accent-red);
-  margin-bottom: 32px;
+  margin-bottom: 14px;
 }
 
 .brands-section__heading {
   font-family: var(--font-serif);
-  font-size: clamp(36px, 4.45vw, 64px);
+  font-size: clamp(32px, 3.2vw, 46px);
   font-weight: 700;
-  line-height: 1.17;
+  line-height: 1.15;
   letter-spacing: -0.01em;
   color: #ffffff;
   display: flex;
@@ -640,10 +644,10 @@ button:focus-visible {
 }
 
 .brands-section__supporting {
-  margin-top: 26px;
-  font-size: 18px;
+  margin-top: 12px;
+  font-size: 15px;
   font-weight: 400;
-  line-height: 1.5;
+  line-height: 1.45;
   color: #bebbb4;
 }
 
@@ -657,13 +661,15 @@ button:focus-visible {
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 0;
   width: 100%;
+  max-width: min(1160px, 146dvh);
+  margin: 0 auto;
   padding-inline: 10px;
 }
 
 .brands-section__grid-item {
   position: relative;
   min-width: 0;
-  margin-inline: -10px;
+  margin-inline: -8px;
 }
 
 .brand-panel {
@@ -671,7 +677,7 @@ button:focus-visible {
   position: relative;
   display: block;
   width: 100%;
-  aspect-ratio: 351 / 590;
+  aspect-ratio: 351 / 500;
   isolation: isolate;
 }
 
@@ -811,9 +817,9 @@ button:focus-visible {
 }
 
 .brands-section__footer-label {
-  margin-top: 48px;
+  margin-top: 24px;
   text-align: center;
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 700;
   line-height: 1.2;
   letter-spacing: 0.04em;
@@ -1011,7 +1017,7 @@ button:focus-visible {
   }
 
   .brands-section__inner {
-    padding: 48px 32px 54px;
+    padding: 30px 32px 32px;
   }
 
   .site-footer__inner {
@@ -1173,6 +1179,11 @@ button:focus-visible {
   }
 
   /* Mobile Section 3: 2x2 Slanted Grid */
+  .brands-section {
+    min-height: 0;
+    display: block;
+  }
+
   .brands-section__inner {
     padding: 44px 16px 46px;
   }
@@ -1206,6 +1217,7 @@ button:focus-visible {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     row-gap: 18px;
     column-gap: 0;
+    max-width: none;
     padding-inline: 4px;
   }
 

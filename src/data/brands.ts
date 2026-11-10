@@ -12,6 +12,7 @@ export interface BrandCharacter {
   portraitStyle: {
     top: string;
     height: string;
+    left?: string;
   };
 }
 
@@ -65,8 +66,9 @@ export const BRANDS: BrandCharacter[] = [
     imageHeight: 1219,
     alt: 'Kingu Kongu — Black daruma with ivory face and markings, peach eye accents, two stacked K letters, skull motifs and cream furry arms',
     portraitStyle: {
-      top: '3.50%',
-      height: '89.00%',
+      top: '11%',
+      height: '62%',
+      left: '49.5%',
     },
   },
   {
@@ -82,8 +84,9 @@ export const BRANDS: BrandCharacter[] = [
     imageHeight: 975,
     alt: 'Lucky Kong — Green daruma with a smiling ivory face, closed green eyelids, cream furry arms and welcoming open hands',
     portraitStyle: {
-      top: '3.91%',
-      height: '88.17%',
+      top: '19.5%',
+      height: '43%',
+      left: '50%',
     },
   },
   {
@@ -99,8 +102,9 @@ export const BRANDS: BrandCharacter[] = [
     imageHeight: 1302,
     alt: 'Kingu Ramen — Golden-yellow daruma with amber eyes, smiling face and one hand against its cheek',
     portraitStyle: {
-      top: '3.87%',
-      height: '88.25%',
+      top: '10.5%',
+      height: '63.5%',
+      left: '50.5%',
     },
   },
   {
@@ -116,8 +120,9 @@ export const BRANDS: BrandCharacter[] = [
     imageHeight: 1639,
     alt: 'Double Cheese Please — Spiky black-haired streetwear character with cyan sunglasses, black hoodie, crossed arms, chain details and blue/white sneakers',
     portraitStyle: {
-      top: '6.13%',
-      height: '114.73%',
+      top: '5.5%',
+      height: '88.5%',
+      left: '52.5%',
     },
   },
 ];

@@ -24,16 +24,28 @@ export const BrandPanelsSection: React.FC = () => {
           </p>
         </header>
 
-        <div className="brands-section__grid" role="list">
-          {BRANDS.map((brand) => (
-            <div
-              key={brand.id}
-              className="brands-section__grid-item"
-              role="listitem"
-            >
-              <BrandPanel brand={brand} />
-            </div>
-          ))}
+        <div className="brands-stage">
+          <div className="brands-stage__ambience" aria-hidden="true" />
+
+          <div className="brands-stage__backdrop" aria-hidden="true">
+            <span className="brands-stage__backdrop-desktop">KONG FAMILY</span>
+            <span className="brands-stage__backdrop-mobile">
+              <span>KONG</span>
+              <span>FAMILY</span>
+            </span>
+          </div>
+
+          <div className="brands-section__grid" role="list">
+            {BRANDS.map((brand) => (
+              <div
+                key={brand.id}
+                className={`brands-section__grid-item brands-section__grid-item--${brand.id}`}
+                role="listitem"
+              >
+                <BrandPanel brand={brand} />
+              </div>
+            ))}
+          </div>
         </div>
 
         <p className="brands-section__footer-label">CHOOSE YOUR KONG.</p>

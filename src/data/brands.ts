@@ -1,19 +1,30 @@
-export interface StageCharacterSprite {
-  src: string;
-  width: number;
-  height: number;
-  alt: string;
-  scaleHeight?: string;
-}
-
 export interface BrandCharacter {
   id: 'kingu-kongu' | 'lucky-kong' | 'kingu-ramen' | 'double-cheese-please';
   name: string;
   panelLabelLines: string[];
   characterDescription: string;
-  accentColor: string;
+  panelColor: string;
   url: string;
-  characters: StageCharacterSprite[];
+  image: string;
+  imageWidth: number;
+  imageHeight: number;
+  alt: string;
+  portraitStyle: {
+    top: string;
+    height: string;
+    left?: string;
+  };
+}
+
+export interface AssembleCharacter {
+  id: string;
+  brandName: string;
+  url: string;
+  src: string;
+  width: number;
+  height: number;
+  alt: string;
+  scaleHeight: string;
 }
 
 export interface NavItem {
@@ -52,85 +63,131 @@ export const ABOUT_PHOTOS = {
   },
 };
 
+export const ASSEMBLE_CHARACTERS: AssembleCharacter[] = [
+  {
+    id: 'assemble-kingu-kongu',
+    brandName: 'Kingu Kongu',
+    url: 'https://kingu-kongu.vercel.app/',
+    src: '/assets/characters/stage-kingu-kongu.png',
+    width: 747,
+    height: 887,
+    alt: 'Kingu Kongu — Smiling black daruma character with hands together',
+    scaleHeight: '59%',
+  },
+  {
+    id: 'assemble-lucky-kong',
+    brandName: 'Lucky Kong',
+    url: 'https://lucky-kong.vercel.app/',
+    src: '/assets/characters/stage-lucky-kong.png',
+    width: 785,
+    height: 851,
+    alt: 'Lucky Kong — Shy green daruma character touching index fingers together',
+    scaleHeight: '57%',
+  },
+  {
+    id: 'assemble-kingu-ramen',
+    brandName: 'Kingu Ramen',
+    url: 'https://kingu-ramen-mu.vercel.app',
+    src: '/assets/characters/stage-kingu-ramen.png',
+    width: 775,
+    height: 893,
+    alt: 'Kingu Ramen — Playful golden-yellow daruma character sticking its tongue out',
+    scaleHeight: '59%',
+  },
+  {
+    id: 'assemble-dcp-1',
+    brandName: 'Double Cheese Please',
+    url: 'https://double-cheese-please.vercel.app/',
+    src: '/assets/characters/stage-dcp-1.png',
+    width: 506,
+    height: 1001,
+    alt: 'Double Cheese Please character in black hoodie and cyan sunglasses flashing double peace signs',
+    scaleHeight: '83%',
+  },
+  {
+    id: 'assemble-dcp-2',
+    brandName: 'Double Cheese Please',
+    url: 'https://double-cheese-please.vercel.app/',
+    src: '/assets/characters/stage-dcp-2.png',
+    width: 402,
+    height: 941,
+    alt: 'Double Cheese Please character in blue cap, cream tee and dark cargo pants with arms crossed',
+    scaleHeight: '78%',
+  },
+];
+
 export const BRANDS: BrandCharacter[] = [
   {
     id: 'kingu-kongu',
     name: 'Kingu Kongu',
     panelLabelLines: ['KINGU KONGU'],
     characterDescription:
-      'Black daruma character with happy curved eyes, peach accents, K emblem and cream furry arms with hands pressed together',
-    accentColor: '#BF7255',
+      'Black daruma with ivory face and markings, peach eye accents, two stacked K letters, skull motifs and cream furry arms',
+    panelColor: '#BF7255',
     url: 'https://kingu-kongu.vercel.app/',
-    characters: [
-      {
-        src: '/assets/characters/stage-kingu-kongu.png',
-        width: 747,
-        height: 887,
-        alt: 'Kingu Kongu — Smiling black daruma character with cream furry arms and hands together',
-        scaleHeight: '80%',
-      },
-    ],
+    image: '/assets/characters/kingu-kongu-daruma.png',
+    imageWidth: 1290,
+    imageHeight: 1219,
+    alt: 'Kingu Kongu — Black daruma with ivory face and markings, peach eye accents, two stacked K letters, skull motifs and cream furry arms',
+    portraitStyle: {
+      top: '11%',
+      height: '62%',
+      left: '49.5%',
+    },
   },
   {
     id: 'lucky-kong',
     name: 'Lucky Kong',
     panelLabelLines: ['LUCKY KONG'],
     characterDescription:
-      'Green daruma character with shy smiling expression and cream furry arms touching index fingers together',
-    accentColor: '#86A83A',
+      'Green daruma with a smiling ivory face, closed green eyelids, cream furry arms and welcoming open hands',
+    panelColor: '#86A83A',
     url: 'https://lucky-kong.vercel.app/',
-    characters: [
-      {
-        src: '/assets/characters/stage-lucky-kong.png',
-        width: 785,
-        height: 851,
-        alt: 'Lucky Kong — Smiling green daruma character touching index fingers together',
-        scaleHeight: '78%',
-      },
-    ],
+    image: '/assets/characters/lucky-kong-daruma.png',
+    imageWidth: 1614,
+    imageHeight: 975,
+    alt: 'Lucky Kong — Green daruma with a smiling ivory face, closed green eyelids, cream furry arms and welcoming open hands',
+    portraitStyle: {
+      top: '19.5%',
+      height: '43%',
+      left: '50%',
+    },
   },
   {
     id: 'kingu-ramen',
     name: 'Kingu Ramen',
     panelLabelLines: ['KINGU RAMEN'],
     characterDescription:
-      'Golden-yellow daruma character with bright amber eyes, playful tongue-out smile and cream furry arms',
-    accentColor: '#ECAF3B',
+      'Golden-yellow daruma with amber eyes, smiling face and one hand against its cheek',
+    panelColor: '#ECAF3B',
     url: 'https://kingu-ramen-mu.vercel.app',
-    characters: [
-      {
-        src: '/assets/characters/stage-kingu-ramen.png',
-        width: 775,
-        height: 893,
-        alt: 'Kingu Ramen — Playful golden-yellow daruma character sticking its tongue out',
-        scaleHeight: '80%',
-      },
-    ],
+    image: '/assets/characters/kingu-ramen-daruma.png',
+    imageWidth: 1208,
+    imageHeight: 1302,
+    alt: 'Kingu Ramen — Golden-yellow daruma with amber eyes, smiling face and one hand against its cheek',
+    portraitStyle: {
+      top: '10.5%',
+      height: '63.5%',
+      left: '50.5%',
+    },
   },
   {
     id: 'double-cheese-please',
     name: 'Double Cheese Please',
-    panelLabelLines: ['DOUBLE CHEESE PLEASE'],
+    panelLabelLines: ['DOUBLE CHEESE', 'PLEASE'],
     characterDescription:
-      'Double Cheese Please streetwear duo — spiky-haired character throwing peace signs alongside blue-cap character in cargo pants',
-    accentColor: '#318FAD',
+      'Spiky black-haired streetwear character with cyan sunglasses, black hoodie, crossed arms, chain details and blue/white sneakers',
+    panelColor: '#318FAD',
     url: 'https://double-cheese-please.vercel.app/',
-    characters: [
-      {
-        src: '/assets/characters/stage-dcp-1.png',
-        width: 506,
-        height: 1001,
-        alt: 'Double Cheese Please character in black hoodie and blue sunglasses flashing double peace signs',
-        scaleHeight: '99%',
-      },
-      {
-        src: '/assets/characters/stage-dcp-2.png',
-        width: 402,
-        height: 941,
-        alt: 'Double Cheese Please character in blue cap, cream tee and dark cargo pants with arms crossed',
-        scaleHeight: '93%',
-      },
-    ],
+    image: '/assets/characters/double-cheese-please-character.png',
+    imageWidth: 960,
+    imageHeight: 1639,
+    alt: 'Double Cheese Please — Spiky black-haired streetwear character with cyan sunglasses, black hoodie, crossed arms, chain details and blue/white sneakers',
+    portraitStyle: {
+      top: '5.5%',
+      height: '88.5%',
+      left: '52.5%',
+    },
   },
 ];
 

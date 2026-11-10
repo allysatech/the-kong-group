@@ -12,7 +12,15 @@ export const Footer: React.FC = () => {
             <p className="site-footer__eyebrow">STAY IN GOOD COMPANY.</p>
             <h2 className="site-footer__statement">See you at the table.</h2>
             <div className="site-footer__brand-block site-footer__brand-block--desktop">
-              <p className="site-footer__wordmark">THE KONG GROUP</p>
+              <img
+                src="/assets/logo/the-kong-group-logo-white.png"
+                width={807}
+                height={487}
+                alt="The Kong Group"
+                className="site-footer__logo"
+                decoding="async"
+                draggable={false}
+              />
               <p className="site-footer__tagline">
                 Lifestyle. Food. Beverage. Malaysia.
               </p>
@@ -98,7 +106,15 @@ export const Footer: React.FC = () => {
 
         <div className="site-footer__bottom">
           <div className="site-footer__bottom-brand-mobile">
-            <p className="site-footer__wordmark">THE KONG GROUP</p>
+            <img
+              src="/assets/logo/the-kong-group-logo-white.png"
+              width={807}
+              height={487}
+              alt="The Kong Group"
+              className="site-footer__logo site-footer__logo--mobile"
+              decoding="async"
+              draggable={false}
+            />
             <p className="site-footer__tagline">
               Lifestyle. Food. Beverage. Malaysia.
             </p>

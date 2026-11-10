@@ -24,6 +24,7 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 84px;
   background-color: var(--bg-light);
   color: var(--text-primary);
   font-family: var(--font-sans);
@@ -40,7 +41,7 @@ html {
 
 body {
   min-height: 100vh;
-  overflow-x: hidden;
+  overflow-x: clip;
   background-color: var(--bg-light);
   color: var(--text-primary);
 }
@@ -90,142 +91,220 @@ button:focus-visible {
 }
 
 /* ==========================================================================
-   HEADER & NAVIGATION
+   HEADER & PROPER STICKY NAVBAR
    ========================================================================== */
 
 .site-header {
-  position: relative;
-  z-index: 20;
+  position: sticky;
+  top: 0;
+  z-index: 100;
   width: 100%;
+  background-color: rgba(246, 245, 241, 0.86);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(25, 25, 25, 0.08);
+  transition: background-color 220ms ease, box-shadow 220ms ease,
+    border-color 220ms ease;
+}
+
+.site-header--scrolled {
+  background-color: rgba(246, 245, 241, 0.94);
+  border-bottom-color: rgba(25, 25, 25, 0.12);
+  box-shadow: 0 8px 28px rgba(25, 25, 25, 0.06);
 }
 
 .site-header__inner {
   max-width: 1440px;
+  min-height: 78px;
   margin: 0 auto;
-  padding: 40px 64px 0;
+  padding: 12px 64px;
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: space-between;
   gap: 24px;
 }
 
 .site-header__brand {
   display: inline-flex;
-  flex-direction: column;
-  justify-content: center;
-  min-height: 44px;
-  gap: 5px;
+  align-items: center;
+  flex-shrink: 0;
+  padding: 2px 0;
+  transition: opacity 180ms ease, transform 180ms ease;
 }
 
-.site-header__wordmark {
-  font-family: var(--font-sans);
-  font-size: 20px;
-  font-weight: 800;
-  line-height: 1.05;
-  letter-spacing: -0.01em;
-  color: var(--text-primary);
+.site-header__brand:hover {
+  opacity: 0.85;
 }
 
-.site-header__sublabel {
-  font-family: var(--font-sans);
-  font-size: 9px;
-  font-weight: 500;
-  line-height: 1;
-  letter-spacing: 0.06em;
-  color: var(--text-secondary);
+.site-header__logo {
+  height: 46px;
+  width: auto;
+  object-fit: contain;
 }
 
 .site-header__nav-desktop {
-  display: block;
+  display: flex;
+  align-items: center;
 }
 
 .site-header__nav-list {
   list-style: none;
   display: flex;
   align-items: center;
+  gap: 36px;
+}
+
+.site-header__nav-link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  min-height: 40px;
+  padding: 4px 2px;
+  font-size: 12.5px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: var(--text-primary);
+  transition: color 180ms ease;
+}
+
+.site-header__nav-link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 4px;
+  height: 2px;
+  border-radius: 2px;
+  background-color: var(--accent-red);
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 220ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.site-header__nav-link:hover {
+  color: var(--accent-red);
+}
+
+.site-header__nav-link:hover::after {
+  transform: scaleX(1);
+}
+
+.site-header__actions {
+  display: flex;
+  align-items: center;
   gap: 12px;
 }
 
-.site-header__pill {
+.site-header__cta-desktop {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: 44px;
+  gap: 8px;
+  min-height: 42px;
   padding: 0 24px;
   border-radius: 999px;
-  border: 1px solid var(--border-light);
-  background-color: var(--bg-light);
-  color: var(--text-primary);
+  background-color: var(--text-primary);
+  border: 1px solid var(--text-primary);
+  color: #ffffff;
   font-size: 12px;
   font-weight: 700;
-  letter-spacing: 0.01em;
+  letter-spacing: 0.04em;
   transition: background-color 200ms ease, border-color 200ms ease,
-    color 200ms ease, transform 200ms ease;
+    transform 200ms ease;
 }
 
-.site-header__pill:hover {
-  border-color: var(--text-primary);
-  background-color: #eceae3;
-}
-
-.site-header__pill--primary {
-  min-width: 182px;
-  background-color: var(--text-primary);
-  border-color: var(--text-primary);
+.site-header__cta-desktop:hover {
+  background-color: var(--accent-red);
+  border-color: var(--accent-red);
   color: #ffffff;
 }
 
-.site-header__pill--primary:hover {
-  background-color: #2e2e2e;
-  border-color: #2e2e2e;
-  color: #ffffff;
+.site-header__cta-arrow {
+  display: inline-block;
+  font-size: 13px;
+  transition: transform 200ms ease;
 }
 
+.site-header__cta-desktop:hover .site-header__cta-arrow {
+  transform: translateY(2px);
+}
+
+/* Mobile / Tablet 3-Layer Hamburger Menu Control */
 .site-header__mobile-controls {
   display: none;
   position: relative;
 }
 
-.site-header__menu-btn {
+.site-header__burger-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: 44px;
-  min-width: 78px;
-  padding: 0 18px;
-  border-radius: 999px;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
   border: 1px solid var(--border-light);
-  background-color: var(--bg-light);
+  background-color: rgba(255, 255, 255, 0.65);
   color: var(--text-primary);
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.02em;
   transition: background-color 180ms ease, border-color 180ms ease;
+  -webkit-tap-highlight-color: transparent;
 }
 
-.site-header__menu-btn:hover {
-  background-color: #eceae3;
+.site-header__burger-btn:hover {
+  background-color: #ffffff;
   border-color: var(--text-primary);
+}
+
+.site-header__burger-box {
+  position: relative;
+  width: 20px;
+  height: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.site-header__burger-line {
+  display: block;
+  width: 100%;
+  height: 2.2px;
+  border-radius: 999px;
+  background-color: var(--text-primary);
+  transform-origin: center;
+  transition: transform 240ms cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 180ms ease;
+}
+
+.site-header__burger-btn--open .site-header__burger-line:nth-child(1) {
+  transform: translateY(6.4px) rotate(45deg);
+}
+
+.site-header__burger-btn--open .site-header__burger-line:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0.3);
+}
+
+.site-header__burger-btn--open .site-header__burger-line:nth-child(3) {
+  transform: translateY(-6.4px) rotate(-45deg);
 }
 
 .site-header__mobile-menu {
   position: absolute;
-  top: calc(100% + 10px);
+  top: calc(100% + 12px);
   right: 0;
-  width: min(260px, calc(100vw - 32px));
-  background-color: var(--bg-light);
+  width: min(296px, calc(100vw - 32px));
+  background-color: #fbfaf7;
   border: 1px solid var(--border-light);
-  border-radius: 18px;
-  padding: 10px;
-  box-shadow: 0 18px 40px rgba(25, 25, 25, 0.14);
-  z-index: 50;
+  border-radius: 20px;
+  padding: 14px;
+  box-shadow: 0 22px 48px rgba(25, 25, 25, 0.16);
+  z-index: 120;
 }
 
 .site-header__mobile-list {
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 4px;
 }
 
 .site-header__mobile-link {
@@ -233,26 +312,77 @@ button:focus-visible {
   align-items: center;
   justify-content: space-between;
   min-height: 44px;
-  padding: 0 16px;
-  border-radius: 999px;
-  font-size: 12px;
+  padding: 0 14px;
+  border-radius: 12px;
+  font-size: 12.5px;
   font-weight: 700;
+  letter-spacing: 0.03em;
   color: var(--text-primary);
-  border: 1px solid transparent;
-  transition: background-color 160ms ease;
+  transition: background-color 160ms ease, color 160ms ease;
 }
 
 .site-header__mobile-link:hover {
-  background-color: #eae8e0;
+  background-color: #efede6;
+  color: var(--accent-red);
 }
 
-.site-header__mobile-link--primary {
+.site-header__mobile-divider {
+  height: 1px;
+  background-color: var(--border-light);
+  margin: 10px 6px;
+}
+
+.site-header__mobile-eyebrow {
+  padding: 2px 14px 6px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--text-secondary);
+}
+
+.site-header__mobile-brands {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin-bottom: 10px;
+}
+
+.site-header__mobile-brand-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 38px;
+  padding: 0 14px;
+  border-radius: 10px;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  transition: background-color 160ms ease, color 160ms ease;
+}
+
+.site-header__mobile-brand-link:hover {
+  background-color: #efede6;
+  color: var(--text-primary);
+}
+
+.site-header__mobile-cta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 44px;
+  padding: 0 16px;
+  border-radius: 999px;
   background-color: var(--text-primary);
   color: #ffffff;
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  transition: background-color 180ms ease;
 }
 
-.site-header__mobile-link--primary:hover {
-  background-color: #2e2e2e;
+.site-header__mobile-cta:hover {
+  background-color: var(--accent-red);
 }
 
 /* ==========================================================================
@@ -1060,11 +1190,14 @@ button:focus-visible {
   display: none;
 }
 
-.site-footer__wordmark {
-  font-size: 22px;
-  font-weight: 800;
-  line-height: 1.2;
-  color: #ffffff;
+.site-footer__logo {
+  height: 48px;
+  width: auto;
+  object-fit: contain;
+}
+
+.site-footer__logo--mobile {
+  height: 38px;
 }
 
 .site-footer__tagline {
@@ -1174,7 +1307,7 @@ button:focus-visible {
 
 @media (max-width: 1140px) {
   .site-header__inner {
-    padding: 32px 40px 0;
+    padding: 12px 40px;
   }
 
   .hero-section__canvas {
@@ -1213,19 +1346,17 @@ button:focus-visible {
 
 @media (max-width: 900px) {
   .site-header__inner {
-    padding: 21px 24px 0;
+    min-height: 66px;
+    padding: 10px 24px;
     align-items: center;
   }
 
-  .site-header__wordmark {
-    font-size: 14px;
+  .site-header__logo {
+    height: 36px;
   }
 
-  .site-header__sublabel {
-    font-size: 8px;
-  }
-
-  .site-header__nav-desktop {
+  .site-header__nav-desktop,
+  .site-header__cta-desktop {
     display: none;
   }
 
@@ -1558,7 +1689,11 @@ button:focus-visible {
 /* Extra-small screens down to 320px */
 @media (max-width: 360px) {
   .site-header__inner {
-    padding: 18px 16px 0;
+    padding: 10px 16px;
+  }
+
+  .site-header__logo {
+    height: 32px;
   }
 
   .hero-section__canvas {
